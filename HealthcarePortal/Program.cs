@@ -9,6 +9,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<HealthcarePortal.Data.AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<HealthcarePortal.Repositories.IPatientRepository, HealthcarePortal.Repositories.PatientRepository>();
+builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
